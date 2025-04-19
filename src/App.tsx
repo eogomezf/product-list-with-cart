@@ -25,12 +25,6 @@ function App() {
                 img={`src/${item.image.desktop}`}
               />
             ))}
-            {/* <Product
-              name={"Flang"}
-              category={"Wafle"}
-              price={10}
-              img={"src/./assets/images/image-brownie-desktop.jpg"}
-            /> */}
           </div>
         </div>
         <div className="col-3">

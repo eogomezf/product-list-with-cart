@@ -1,20 +1,22 @@
 export const Cart = () => {
-  const width = {
-    width: "18rem",
-  };
-  const img: string = "src/assets/images/image-brownie-mobile.jpg";
+  // const img: string = "src/assets/images/image-brownie-mobile.jpg";
   return (
-    <div className="card" style={width}>
-      <img src={img} className="card-img-top" />
-      <div className="card-body">
-        <h5 className="card-title">Card title</h5>
-        <p className="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <a href="#" className="btn btn-primary">
-          Go somewhere
-        </a>
+    <div
+      className=" bg-white"
+      style={{
+        width: "20rem",
+        borderRadius: "5px",
+      }}
+    >
+      <h5 className="title m-2 p-3 text-danger">Your Cart (0)</h5>
+      <div className="d-flex flex-column align-items-center justify-content-center">
+        <img
+          className="w-50"
+          src="src/assets/images/illustration-empty-cart.svg"
+          alt="empty"
+        />
+
+        <p className="text-secondary">Your added items will appear here</p>
       </div>
     </div>
   );
