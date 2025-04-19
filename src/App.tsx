@@ -1,6 +1,7 @@
 import "./App.css";
 import { Cart } from "./components/Cart";
 import Product from "./components/Product";
+import data from "./data/data.json";
 
 function App() {
   const style = {
@@ -15,12 +16,21 @@ function App() {
         <div className="col-9">
           <h1>Desserts</h1>
           <div className="d-flex flex-wrap m-5">
-            <Product
+            {data.map((item) => (
+              <Product
+                key={item.name}
+                name={item.name}
+                category={item.category}
+                price={item.price.toFixed(2)}
+                img={`src/${item.image.desktop}`}
+              />
+            ))}
+            {/* <Product
               name={"Flang"}
               category={"Wafle"}
               price={10}
               img={"src/./assets/images/image-brownie-desktop.jpg"}
-            />
+            /> */}
           </div>
         </div>
         <div className="col-3">
