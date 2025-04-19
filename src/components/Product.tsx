@@ -9,7 +9,7 @@ function Product(props: ProductProps) {
   const { name, category, price, img } = props;
 
   const styleImg = {
-    width: "14rem",
+    width: "16rem",
     borderRadius: "10px",
   };
 
