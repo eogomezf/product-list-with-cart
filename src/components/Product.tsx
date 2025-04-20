@@ -1,4 +1,6 @@
+import { ButtonAdd } from "./ButtonAdd";
 interface ProductProps {
+  key: string;
   name: string;
   category: string;
   price: string;
@@ -24,26 +26,13 @@ function Product(props: ProductProps) {
           style={styleImg}
         />
 
-        <button
-          type="button"
-          className="btn btn-light rounded-pill btn-sm d-flex align-items-center px-3 py-2 shadow-sm "
-          style={{
-            border: "2px solid gray",
-            width: "150px",
-            position: "absolute",
-            bottom: "-18px",
-            left: "50%",
-            transform: "translateX(-50%)",
-            zIndex: 2,
-          }}
-        >
-          <img
-            src="src/assets/images/icon-add-to-cart.svg"
-            className="me-2"
-            style={{ width: "16px" }}
-          />
-          <span className="fw-bold text-dark">Add to cart</span>
-        </button>
+        <ButtonAdd
+          name={name}
+          category={category}
+          price={price}
+          key={""}
+          quantity={0}
+        />
       </div>
 
       <div className="mt-4 text-start w-100" style={{ maxWidth: "14rem" }}>

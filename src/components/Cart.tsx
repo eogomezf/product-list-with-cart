@@ -1,5 +1,5 @@
 export const Cart = () => {
-  const list = ["Waffle with Berries", "Juanete"];
+  const list = ["2"];
   const content = list.length ? (
     // Section with items
     <div className="list m-3">
