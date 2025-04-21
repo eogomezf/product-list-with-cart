@@ -7,10 +7,11 @@ interface ProductProps {
   category: string;
   price: string;
   img: string;
+  thumbnail: string;
 }
 
 function Product(props: ProductProps) {
-  const { name, category, price, img } = props;
+  const { name, category, price, img, thumbnail } = props;
 
   //const { addProductToCart } = useContext(CartContext);
 
@@ -36,6 +37,7 @@ function Product(props: ProductProps) {
           price={price}
           key={""}
           quantity={0}
+          thumbnail={thumbnail}
         />
       </div>
 

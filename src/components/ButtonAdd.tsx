@@ -7,11 +7,12 @@ interface ProductProps {
   category: string;
   price: string;
   quantity: number;
+  thumbnail: string;
 }
 
 export const ButtonAdd = (props: ProductProps) => {
   const [cart, setCart] = useContext(CartContext);
-  const { name, category, price } = props;
+  const { name, category, price, thumbnail } = props;
   const [quantity, setQuantity] = useState(0);
 
   useEffect(() => {
@@ -20,7 +21,6 @@ export const ButtonAdd = (props: ProductProps) => {
     );
   }, [cart]);
 
-  console.log(cart);
   useEffect(() => {
     const cartData: ProductProps[] = cart;
     const index = cartData.findIndex((item) => item.name === name);
@@ -32,6 +32,7 @@ export const ButtonAdd = (props: ProductProps) => {
         category: category,
         price: price,
         quantity: quantity,
+        thumbnail: thumbnail,
       };
     } else {
       cartData.push({
@@ -40,6 +41,7 @@ export const ButtonAdd = (props: ProductProps) => {
         category: category,
         price: price,
         quantity: quantity,
+        thumbnail: thumbnail,
       });
     }
 

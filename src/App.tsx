@@ -25,6 +25,7 @@ function App() {
                   category={item.category}
                   price={item.price.toFixed(2)}
                   img={`src/${item.image.desktop}`}
+                  thumbnail={item.image.thumbnail}
                 />
               ))}
             </div>
