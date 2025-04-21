@@ -1,27 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { CartContext } from "../contexts/CartProvider";
 
 interface ProductProps {
   key: string;
   name: string;
   category: string;
   price: string;
-
   quantity: number;
 }
 
 export const ButtonAdd = (props: ProductProps) => {
+  const [cart, setCart] = useContext(CartContext);
   const { name, category, price } = props;
   const [quantity, setQuantity] = useState(0);
-  // const cartData: ProductProps[] = [];
 
   useEffect(() => {
-    const cartStored = localStorage.getItem("cartData");
-    const cartData: ProductProps[] = cartStored ? JSON.parse(cartStored) : [];
-
+    const cartData: ProductProps[] = cart;
+    console.log(cartData);
     const index = cartData.findIndex((item) => item.name === name);
-    console.log(index);
+
     if (index !== -1) {
-      console.log("update");
       cartData[index] = {
         key: name,
         name: name,
@@ -30,7 +28,6 @@ export const ButtonAdd = (props: ProductProps) => {
         quantity: quantity,
       };
     } else {
-      console.log("add");
       cartData.push({
         key: name,
         name: name,
@@ -40,8 +37,9 @@ export const ButtonAdd = (props: ProductProps) => {
       });
     }
 
-    localStorage.setItem("cartData", JSON.stringify(cartData));
-  }, [quantity]);
+    const validCart = cartData.filter((item) => item.quantity > 0);
+    setCart(validCart);
+  }, [cart, category, name, price, quantity, setCart]);
 
   const showButton =
     quantity == 0 ? (

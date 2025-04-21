@@ -1,4 +1,6 @@
+//import { useContext } from "react";
 import { ButtonAdd } from "./ButtonAdd";
+//import { CartContext } from "../contexts/CartProvider";
 interface ProductProps {
   key: string;
   name: string;
@@ -10,6 +12,8 @@ interface ProductProps {
 function Product(props: ProductProps) {
   const { name, category, price, img } = props;
 
+  //const { addProductToCart } = useContext(CartContext);
+
   const styleImg = {
     width: "16rem",
     borderRadius: "10px",
@@ -18,6 +22,7 @@ function Product(props: ProductProps) {
   return (
     <div className="d-flex flex-column align-items-center m-3">
       <div style={{ position: "relative" }}>
+        {" "}
         <img
           id="imgProduct"
           className="border"
@@ -25,7 +30,6 @@ function Product(props: ProductProps) {
           alt={name}
           style={styleImg}
         />
-
         <ButtonAdd
           name={name}
           category={category}
