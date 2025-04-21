@@ -11,7 +11,13 @@ interface ProductProps {
 }
 
 export const ButtonAdd = (props: ProductProps) => {
-  const [cart, setCart] = useContext(CartContext);
+  const context = useContext(CartContext);
+
+  if (!context) {
+    throw new Error("Cart must be used within a CartProvider");
+  }
+
+  const [cart, setCart] = context;
   const { name, category, price, thumbnail } = props;
   const [quantity, setQuantity] = useState(0);
 

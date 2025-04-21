@@ -6,7 +6,8 @@ import { CartProvider } from "./contexts/CartProvider";
 import data from "./data/data.json";
 
 function App() {
-  const [device, setDevice] = useState("desktop");
+  type DeviceType = "mobile" | "tablet" | "desktop";
+  const [device, setDevice] = useState<DeviceType>("desktop");
 
   const checkWindowsSize = () => {
     const windowWidth = window.innerWidth;

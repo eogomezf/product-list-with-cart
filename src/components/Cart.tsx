@@ -13,12 +13,23 @@ interface ProductProps {
 }
 
 export const Cart = () => {
-  const [cart, setCart] = useContext(CartContext);
+  const context = useContext(CartContext);
+
+  if (!context) {
+    throw new Error("Cart must be used within a CartProvider");
+  }
+
+  const [cart, setCart] = context;
+
   const cartData: ProductProps[] = cart;
 
-  const totalCartItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+  const totalCartItems = cart.reduce(
+    (acc: number, item: ProductProps) => acc + item.quantity,
+    0
+  );
   const totalPayment = cart.reduce(
-    (acc, item) => acc + item.quantity * Number(item.price),
+    (acc: number, item: ProductProps) =>
+      acc + item.quantity * Number(item.price),
     0
   );
 
