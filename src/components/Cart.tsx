@@ -1,6 +1,6 @@
 //import { useState } from "react";
 
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { CartContext } from "../contexts/CartProvider";
 
 interface ProductProps {
@@ -15,18 +15,17 @@ interface ProductProps {
 export const Cart = () => {
   const [cart, setCart] = useContext(CartContext);
   const cartData: ProductProps[] = cart;
-  // let cartData: cart;
-  console.log(cart);
-  console.log(cart.reduce((acc, item) => acc + item.quantity, 0));
+
   const totalCartItems = cart.reduce((acc, item) => acc + item.quantity, 0);
   const totalPayment = cart.reduce(
     (acc, item) => acc + item.quantity * Number(item.price),
     0
   );
 
-  // useEffect(() => {
-
-  // }, []);
+  const handleClick = (name: string) => {
+    const updatedCart = cartData.filter((item) => item.name !== name);
+    setCart(updatedCart);
+  };
 
   const content =
     totalCartItems > 0 ? (
@@ -49,6 +48,7 @@ export const Cart = () => {
                 </small>
               </div>
               <button
+                onClick={() => handleClick(item.name)}
                 className="btn btn-outline-secondary rounded-circle"
                 style={{
                   padding: "3px 7px 7px 7px",
@@ -100,7 +100,7 @@ export const Cart = () => {
     <div
       className=" bg-white"
       style={{
-        width: "20rem",
+        width: "22rem",
         borderRadius: "5px",
       }}
     >
