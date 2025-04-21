@@ -21,7 +21,7 @@ function Product(props: ProductProps) {
   };
 
   return (
-    <div className="d-flex flex-column align-items-center m-3">
+    <div className="d-flex flex-column align-items-center m-2">
       <div style={{ position: "relative" }}>
         {" "}
         <img

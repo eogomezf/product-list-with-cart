@@ -15,7 +15,7 @@ interface ProductProps {
 export const Cart = () => {
   const [cart, setCart] = useContext(CartContext);
   const cartData: ProductProps[] = cart;
-  console.log(cartData);
+
   const totalCartItems = cart.reduce((acc, item) => acc + item.quantity, 0);
   const totalPayment = cart.reduce(
     (acc, item) => acc + item.quantity * Number(item.price),
@@ -107,7 +107,7 @@ export const Cart = () => {
                 />
                 <h5 className="modal-title fw-bold">Order Confirmed</h5>
                 <p>
-                  <small> We hope ypu enjoy your food!</small>
+                  <small> We hope you enjoy your food!</small>
                 </p>
                 <div className="list m-3">
                   <div
@@ -181,7 +181,7 @@ export const Cart = () => {
     <div
       className=" bg-white"
       style={{
-        width: "22rem",
+        width: "20rem",
         borderRadius: "5px",
       }}
     >
