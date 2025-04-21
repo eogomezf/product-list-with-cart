@@ -15,8 +15,14 @@ export const ButtonAdd = (props: ProductProps) => {
   const [quantity, setQuantity] = useState(0);
 
   useEffect(() => {
+    setQuantity(
+      cart.find((item: { name: string }) => item.name === name)?.quantity || 0
+    );
+  }, [cart]);
+
+  console.log(cart);
+  useEffect(() => {
     const cartData: ProductProps[] = cart;
-    console.log(cartData);
     const index = cartData.findIndex((item) => item.name === name);
 
     if (index !== -1) {
@@ -39,7 +45,7 @@ export const ButtonAdd = (props: ProductProps) => {
 
     const validCart = cartData.filter((item) => item.quantity > 0);
     setCart(validCart);
-  }, [cart, category, name, price, quantity, setCart]);
+  }, [quantity]);
 
   const showButton =
     quantity == 0 ? (
